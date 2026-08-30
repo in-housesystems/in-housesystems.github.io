@@ -3,28 +3,678 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>In-House Systems</title>
+  <title>In-House Systems — 120-Day In-House Printing Proof Pilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Georgia, serif; max-width: 42rem; margin: 3rem auto; padding: 0 1.25rem; color: #14241f; background: #f4f1ea; line-height: 1.55; }
-    h1 { font-size: 2rem; margin: 0.35rem 0 1rem; }
-    .tag { letter-spacing: 0.12em; font-size: 0.75rem; text-transform: uppercase; color: #3d6b5c; }
-    a.cta { display: inline-block; margin-top: 1.5rem; background: #1c3d34; color: #fff; text-decoration: none; padding: 0.7rem 1.1rem; }
-    a.cta:hover { background: #142e27; }
-    ul { padding-left: 1.2rem; }
-    footer { margin-top: 3rem; font-size: 0.85rem; color: #5b5b5b; }
+    :root {
+      --bone: #f3eee4;
+      --bone-2: #ebe4d6;
+      --ink: #111111;
+      --muted: #5a574e;
+      --navy: #10141c;
+      --navy-2: #171c26;
+      --mint: #7fe0b8;
+      --mint-deep: #5ec99a;
+      --line: rgba(17, 17, 17, 0.1);
+      --max: 1080px;
+      --wide: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: var(--bone);
+      background-image:
+        linear-gradient(rgba(17, 17, 17, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.045) 1px, transparent 1px);
+      background-size: 56px 56px;
+      color: var(--ink);
+      line-height: 1.5;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+    .wrap-wide {
+      width: min(var(--wide), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* —— Header —— */
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(243, 238, 228, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      width: min(var(--wide), calc(100% - 48px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 68px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--navy);
+      color: var(--mint);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+      border-radius: 999px;
+      padding: 11px 18px;
+      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      background: transparent;
+    }
+    .btn-fill {
+      background: var(--navy);
+      color: #fff;
+      border: 1px solid var(--navy);
+    }
+    .btn-mint {
+      background: var(--mint);
+      color: var(--navy);
+      border: 1px solid var(--mint);
+      font-weight: 700;
+    }
+
+    /* —— Hero —— */
+    .hero {
+      padding: 88px 0 72px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.15rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      font-weight: 650;
+      margin: 0 0 22px;
+      color: var(--ink);
+    }
+    h1 em {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .path-a {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin: 0 0 32px;
+      max-width: 34em;
+      line-height: 1.45;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .proof {
+      background: var(--navy);
+      color: #e8efe9;
+      border-radius: 24px;
+      padding: 32px 32px 28px;
+      box-shadow: 0 24px 60px rgba(16, 20, 28, 0.22);
+    }
+    .proof .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin: 0 0 22px;
+    }
+    .proof-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 18px;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      align-items: baseline;
+    }
+    .proof-row:first-of-type { border-top: 0; padding-top: 0; }
+    .proof .num {
+      font-size: 2.35rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--mint);
+      line-height: 1;
+    }
+    .proof .stat-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f4f7f4;
+    }
+    .proof .stat-note {
+      display: block;
+      font-size: 13.5px;
+      color: #9aa3ae;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    /* —— Ticker —— */
+    .ticker {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(243, 238, 228, 0.55);
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      padding: 14px 0;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ticker-track span { padding: 0 28px; }
+    .ticker-track span::before {
+      content: "·";
+      margin-right: 28px;
+      color: var(--mint-deep);
+    }
+    @media (max-width: 860px) {
+      .ticker-track {
+        flex-wrap: wrap;
+        justify-content: center;
+        white-space: normal;
+        letter-spacing: 0.1em;
+        row-gap: 6px;
+      }
+      .ticker-track span { padding: 0 12px; }
+      .ticker-track span::before { margin-right: 12px; }
+      .ticker-track span:nth-child(n+5) { display: none; }
+    }
+
+    /* —— Sections —— */
+    section { padding: 88px 0; }
+    .sec-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+      font-weight: 650;
+      margin: 0 0 40px;
+    }
+    .guar h2 {
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      line-height: 1.28;
+      letter-spacing: -0.03em;
+      max-width: 22em;
+      margin-bottom: 28px;
+    }
+
+    /* Problem cards */
+    .problems {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .card {
+      background: rgba(255, 252, 247, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 28px 26px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      letter-spacing: -0.025em;
+      font-weight: 650;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.5;
+    }
+
+    /* Includes */
+    #includes { }
+    .includes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 40px;
+    }
+    .inc {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 14px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+    .inc .n {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+      padding-top: 2px;
+    }
+    .inc p { margin: 0; color: var(--ink); font-size: 16px; line-height: 1.45; }
+
+    /* Steps */
+    #how { background: transparent; }
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .step {
+      background: rgba(255, 252, 247, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 22px 26px;
+      min-height: 210px;
+    }
+    .step .n {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+    .step .n span { color: var(--mint-deep); }
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      font-weight: 650;
+    }
+    .step p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    /* Guarantee */
+    .guar-band {
+      padding: 0 0 88px;
+    }
+    .guar {
+      background: var(--navy);
+      color: #eef2ee;
+      border-radius: 28px;
+      padding: 56px 56px 48px;
+    }
+    .guar .sec-label { color: var(--mint); }
+    .guar h2 { color: #fff; margin-bottom: 16px; }
+    .guar > p.lead {
+      font-size: 1.2rem;
+      line-height: 1.45;
+      color: #c5cdc8;
+      margin: 0 0 28px;
+      max-width: 38em;
+    }
+    .guar-ex {
+      display: inline-block;
+      background: rgba(127, 224, 184, 0.12);
+      border: 1px solid rgba(127, 224, 184, 0.35);
+      color: var(--mint);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 14.5px;
+      font-weight: 600;
+      margin-bottom: 36px;
+    }
+    .day120 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .day120 div {
+      background: var(--navy-2);
+      border-radius: 16px;
+      padding: 22px 22px 20px;
+    }
+    .day120 strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+    .day120 p { margin: 0; color: #b7bfc8; font-size: 15px; }
+
+    /* Stage 2 */
+    .stage2 {
+      padding: 0 0 88px;
+    }
+    .stage2-inner {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 16px;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      align-items: baseline;
+    }
+    .stage2-inner strong {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* CTA */
+    .cta-band {
+      background: var(--navy);
+      color: #eef2ee;
+      padding: 96px 0;
+    }
+    .cta-band h2 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+    }
+    .cta-band p {
+      color: #b7bfc8;
+      font-size: 1.15rem;
+      margin: 0 0 32px;
+      max-width: 32em;
+    }
+    .cta-band .btn { padding: 14px 22px; font-size: 15px; }
+
+    footer {
+      padding: 28px 0 36px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    footer a { text-decoration: none; }
+
+    @media (max-width: 860px) {
+      .hero { padding: 56px 0 48px; }
+      .hero-grid, .problems, .includes, .steps, .day120 {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display: none; }
+      .wrap, .wrap-wide, .nav-inner { width: min(100% - 32px, var(--wide)); }
+      section { padding: 72px 0; }
+      .guar { padding: 36px 28px; border-radius: 22px; }
+      .guar-band, .stage2 { padding-bottom: 72px; }
+      .stage2-inner { grid-template-columns: 1fr; gap: 8px; }
+      .cta-band { padding: 72px 0; }
+      .proof { margin-top: 8px; }
+      .step { min-height: 0; }
+    }
   </style>
 </head>
 <body>
-  <p class="tag">In-House Systems</p>
-  <h1>Your team prints. We train.</h1>
-  <p>Practice staff print. We train. We are not your lab.</p>
-  <ul>
-    <li>Staff Press-Start Pack</li>
-    <li>Lab Savings Review</li>
-    <li>Print Cell Stay-Running Pack</li>
-  </ul>
-  <p>Start with a 15-minute Lab Savings Review, then a 120-day printing pilot for $7,500. After the pilot: keep, expand, or stop.</p>
-  <a class="cta" href="mailto:jackpatt3rson99@gmail.com?subject=Lab%20Savings%20Review">Request a Lab Savings Review</a>
-  <footer>In-House Systems LLC · Round Rock, TX</footer>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <span class="mark">IH</span>
+        In-House Systems
+      </a>
+      <nav class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#includes">Includes</a>
+        <a href="#how">How it works</a>
+        <a href="#guarantee">Guarantee</a>
+      </nav>
+      <a class="btn btn-outline" href="mailto:jackpatt3rson99@gmail.com?subject=Lab%20Savings%20Review">Request a review</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap-wide hero-grid">
+        <div>
+          <p class="kicker">The 120-Day In-House Printing Proof Pilot</p>
+          <h1>Prove the <em>savings</em> before buying the equipment.</h1>
+          <p class="path-a">Your staff prints. We install, train, and support. We are not your lab.</p>
+          <div class="hero-actions">
+            <a class="btn btn-fill" href="mailto:jackpatt3rson99@gmail.com?subject=Lab%20Savings%20Review">Request a review</a>
+          </div>
+        </div>
+        <aside class="proof">
+          <p class="label">Proof Pilot</p>
+          <div class="proof-row">
+            <div class="num">120</div>
+            <div>
+              <div class="stat-label">Days to prove savings</div>
+              <span class="stat-note">inside your practice</span>
+            </div>
+          </div>
+          <div class="proof-row">
+            <div class="num">$7,500</div>
+            <div>
+              <div class="stat-label">Implementation fee</div>
+              <span class="stat-note">backed by a savings guarantee</span>
+            </div>
+          </div>
+          <div class="proof-row">
+            <div class="num">$0</div>
+            <div>
+              <div class="stat-label">Equipment purchase</div>
+              <span class="stat-note">during the pilot</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="ticker">
+      <div class="ticker-track">
+        <span>High lab fees</span>
+        <span>Back-and-forth</span>
+        <span>Slow turnaround</span>
+        <span>Less control</span>
+        <span>High lab fees</span>
+        <span>Back-and-forth</span>
+        <span>Slow turnaround</span>
+        <span>Less control</span>
+      </div>
+    </div>
+
+    <section id="problem">
+      <div class="wrap">
+        <h2>The outsourcing problem</h2>
+        <div class="problems">
+          <article class="card">
+            <h3>High lab fees</h3>
+            <p>High fees keep more of the manufacturing margin outside the practice.</p>
+          </article>
+          <article class="card">
+            <h3>Back-and-forth</h3>
+            <p>Calls and emails create delays and communication gaps.</p>
+          </article>
+          <article class="card">
+            <h3>Slow turnaround</h3>
+            <p>Long lead times and delays complicate scheduling.</p>
+          </article>
+          <article class="card">
+            <h3>Less control</h3>
+            <p>Some work may be produced overseas, reducing visibility and control.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="includes">
+      <div class="wrap">
+        <h2>What the pilot includes</h2>
+        <div class="includes">
+          <div class="inc">
+            <div class="n">01</div>
+            <p>$0 equipment purchase during the pilot.</p>
+          </div>
+          <div class="inc">
+            <div class="n">02</div>
+            <p>IHS installs and configures the system.</p>
+          </div>
+          <div class="inc">
+            <div class="n">03</div>
+            <p>Baseline current lab spend and turnaround.</p>
+          </div>
+          <div class="inc">
+            <div class="n">04</div>
+            <p>IHS trains staff on scanning, submission, printing, post-processing, QC, and case organization. Staff run the cell.</p>
+          </div>
+          <div class="inc">
+            <div class="n">05</div>
+            <p>SOPs and repeatable workflows provided.</p>
+          </div>
+          <div class="inc">
+            <div class="n">06</div>
+            <p>IHS supports initial cases while staff print. IHS does not press Start.</p>
+          </div>
+          <div class="inc">
+            <div class="n">07</div>
+            <p>Track savings, turnaround, remakes, and production.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <h2>How the pilot works</h2>
+        <div class="steps">
+          <article class="step">
+            <div class="n"><span>01</span></div>
+            <h3>Baseline</h3>
+            <p>Lab spend + turnaround</p>
+          </article>
+          <article class="step">
+            <div class="n"><span>02</span></div>
+            <h3>Install</h3>
+            <p>System configured in-practice</p>
+          </article>
+          <article class="step">
+            <div class="n"><span>03</span></div>
+            <h3>Train + support</h3>
+            <p>Team trained + cases supported</p>
+          </article>
+          <article class="step">
+            <div class="n"><span>04</span></div>
+            <h3>Prove</h3>
+            <p>Track results; decide at day 120</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="guar-band" id="guarantee">
+      <div class="wrap">
+        <div class="guar">
+          <p class="sec-label">The guarantee</p>
+          <h2>If verified savings during the 120-day pilot don’t equal the $7,500 implementation fee, IHS refunds the difference.</h2>
+          <div class="guar-ex">Example: Save $6,000 and IHS refunds $1,500.</div>
+          <div class="day120">
+            <div>
+              <strong>At day 120 — if it works:</strong>
+              <p>Purchase permanent equipment and keep the system running.</p>
+            </div>
+            <div>
+              <strong>If it doesn’t:</strong>
+              <p>Pilot equipment is removed. No purchase obligation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage2">
+      <div class="wrap stage2-inner">
+        <strong>Stage 2</strong>
+        <p style="margin:0">After printing is proven, milling can be evaluated. Printing is the offer; milling is optional Stage 2.</p>
+      </div>
+    </div>
+
+    <section class="cta-band" id="review" style="padding: 96px 0;">
+      <div class="wrap">
+        <h2>15-minute Lab Savings Review</h2>
+        <p>Bring one month of lab invoices. IHS will estimate the in-house opportunity and potential savings.</p>
+        <a class="btn btn-mint" href="mailto:jackpatt3rson99@gmail.com?subject=Lab%20Savings%20Review">Request a review</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>In-House Systems LLC · Round Rock, TX</span>
+      <span>Jack Patterson · 708-800-6129 · <a href="mailto:jackpatt3rson99@gmail.com">jackpatt3rson99@gmail.com</a></span>
+    </div>
+  </footer>
 </body>
 </html>
