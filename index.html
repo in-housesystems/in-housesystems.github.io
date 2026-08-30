@@ -24,7 +24,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    html, body { margin: 0; padding: 0; }
+    html, body { margin: 0; padding: 0; overflow-x: hidden; }
     body {
       font-family: Inter, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
       background-color: var(--bone);
@@ -61,6 +61,8 @@
     }
     .nav-inner {
       width: min(var(--wide), calc(100% - 48px));
+      max-width: 100%;
+      min-width: 0;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -76,7 +78,7 @@
       font-weight: 600;
       font-size: 15px;
       letter-spacing: -0.02em;
-      flex-shrink: 0;
+      min-width: 0;
     }
     .mark {
       width: 30px;
@@ -135,13 +137,8 @@
 
     /* —— Hero —— */
     .hero {
-      padding: 88px 0 72px;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 56px;
-      align-items: center;
+      padding: 88px 0 56px;
+      border-bottom: 1px solid var(--line);
     }
     .kicker {
       font-size: 12px;
@@ -159,6 +156,9 @@
       margin: 0 0 22px;
       color: var(--ink);
     }
+    @media (min-width: 861px) {
+      h1 { white-space: nowrap; }
+    }
     h1 em {
       font-family: "Instrument Serif", Georgia, serif;
       font-style: italic;
@@ -168,95 +168,49 @@
     .path-a {
       font-size: 1.15rem;
       color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 44em;
+      line-height: 1.5;
+    }
+    .terms {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
       margin: 0 0 32px;
-      max-width: 34em;
-      line-height: 1.45;
+      padding: 0;
+    }
+    .terms li {
+      margin: 0;
+      padding: 16px 18px 15px;
+      background: rgba(255, 252, 247, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .terms li::before {
+      content: "";
+      display: block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint-deep);
+      margin-bottom: 10px;
+    }
+    .terms li strong {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
     }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    .proof {
-      background: var(--navy);
-      color: #e8efe9;
-      border-radius: 24px;
-      padding: 32px 32px 28px;
-      box-shadow: 0 24px 60px rgba(16, 20, 28, 0.22);
-    }
-    .proof .label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--mint);
-      margin: 0 0 22px;
-    }
-    .proof-row {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 6px 18px;
-      padding: 16px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      align-items: baseline;
-    }
-    .proof-row:first-of-type { border-top: 0; padding-top: 0; }
-    .proof .num {
-      font-size: 2.35rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      color: var(--mint);
-      line-height: 1;
-    }
-    .proof .stat-label {
-      font-size: 15px;
-      font-weight: 600;
-      color: #f4f7f4;
-    }
-    .proof .stat-note {
-      display: block;
-      font-size: 13.5px;
-      color: #9aa3ae;
-      font-weight: 400;
-      margin-top: 2px;
-    }
-
-    /* —— Ticker —— */
-    .ticker {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: rgba(243, 238, 228, 0.55);
-      overflow: hidden;
-    }
-    .ticker-track {
-      display: flex;
-      gap: 0;
-      white-space: nowrap;
-      padding: 14px 0;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .ticker-track span { padding: 0 28px; }
-    .ticker-track span::before {
-      content: "·";
-      margin-right: 28px;
-      color: var(--mint-deep);
-    }
-    @media (max-width: 860px) {
-      .ticker-track {
-        flex-wrap: wrap;
-        justify-content: center;
-        white-space: normal;
-        letter-spacing: 0.1em;
-        row-gap: 6px;
-      }
-      .ticker-track span { padding: 0 12px; }
-      .ticker-track span::before { margin-right: 12px; }
-      .ticker-track span:nth-child(n+5) { display: none; }
-    }
-
     /* —— Sections —— */
-    section { padding: 88px 0; }
+    section { padding: 72px 0; }
     .sec-label {
       font-size: 12px;
       font-weight: 600;
@@ -270,31 +224,25 @@
       letter-spacing: -0.035em;
       line-height: 1.15;
       font-weight: 650;
-      margin: 0 0 40px;
-    }
-    .guar h2 {
-      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
-      line-height: 1.28;
-      letter-spacing: -0.03em;
-      max-width: 22em;
-      margin-bottom: 28px;
+      margin: 0 0 32px;
     }
 
     /* Problem cards */
+    #problem { padding-top: 56px; }
     .problems {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 16px;
     }
     .card {
       background: rgba(255, 252, 247, 0.72);
       border: 1px solid var(--line);
       border-radius: 20px;
-      padding: 28px 28px 26px;
+      padding: 24px 24px 22px;
     }
     .card h3 {
-      margin: 0 0 8px;
-      font-size: 1.15rem;
+      margin: 0 0 6px;
+      font-size: 1.12rem;
       letter-spacing: -0.025em;
       font-weight: 650;
     }
@@ -302,83 +250,59 @@
       margin: 0;
       color: var(--muted);
       font-size: 15.5px;
-      line-height: 1.5;
+      line-height: 1.45;
     }
-
-    /* Includes */
-    #includes { }
-    .includes {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 40px;
-    }
-    .inc {
-      display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 14px;
-      padding: 18px 0;
-      border-top: 1px solid var(--line);
-    }
-    .inc .n {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: 0.04em;
-      padding-top: 2px;
-    }
-    .inc p { margin: 0; color: var(--ink); font-size: 16px; line-height: 1.45; }
 
     /* Steps */
-    #how { background: transparent; }
     .steps {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
     }
     .step {
       background: rgba(255, 252, 247, 0.72);
       border: 1px solid var(--line);
       border-radius: 20px;
-      padding: 28px 22px 26px;
-      min-height: 210px;
+      padding: 24px 20px 22px;
     }
     .step .n {
       font-size: 13px;
       font-weight: 700;
       color: var(--navy);
       letter-spacing: 0.08em;
-      margin-bottom: 28px;
+      margin-bottom: 18px;
     }
     .step .n span { color: var(--mint-deep); }
     .step h3 {
-      margin: 0 0 8px;
-      font-size: 1.25rem;
+      margin: 0 0 6px;
+      font-size: 1.2rem;
       letter-spacing: -0.03em;
       font-weight: 650;
     }
-    .step p { margin: 0; color: var(--muted); font-size: 15px; }
+    .step p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.4; }
 
     /* Guarantee */
     .guar-band {
-      padding: 0 0 88px;
+      padding: 0 0 72px;
     }
     .guar {
       background: var(--navy);
       color: #eef2ee;
       border-radius: 28px;
-      padding: 56px 56px 48px;
+      padding: 48px 48px 40px;
     }
     .guar .sec-label { color: var(--mint); }
-    .guar h2 { color: #fff; margin-bottom: 16px; }
-    .guar > p.lead {
-      font-size: 1.2rem;
-      line-height: 1.45;
-      color: #c5cdc8;
-      margin: 0 0 28px;
-      max-width: 38em;
+    .guar h2 {
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+      line-height: 1.28;
+      letter-spacing: -0.03em;
+      max-width: 22em;
+      color: #fff;
+      margin: 0 0 20px;
     }
     .guar-ex {
       display: inline-block;
+      max-width: 100%;
       background: rgba(127, 224, 184, 0.12);
       border: 1px solid rgba(127, 224, 184, 0.35);
       color: var(--mint);
@@ -386,17 +310,17 @@
       padding: 10px 16px;
       font-size: 14.5px;
       font-weight: 600;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
     .day120 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
+      gap: 14px;
     }
     .day120 div {
       background: var(--navy-2);
       border-radius: 16px;
-      padding: 22px 22px 20px;
+      padding: 20px 20px 18px;
     }
     .day120 strong {
       display: block;
@@ -409,12 +333,12 @@
 
     /* Stage 2 */
     .stage2 {
-      padding: 0 0 88px;
+      padding: 0 0 72px;
     }
     .stage2-inner {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      padding: 28px 0;
+      padding: 22px 0;
       color: var(--muted);
       font-size: 16px;
       display: grid;
@@ -428,12 +352,13 @@
       text-transform: uppercase;
       color: var(--ink);
     }
+    .stage2-inner p { margin: 0; }
 
     /* CTA */
     .cta-band {
       background: var(--navy);
       color: #eef2ee;
-      padding: 96px 0;
+      padding: 80px 0;
     }
     .cta-band h2 {
       color: #fff;
@@ -443,7 +368,7 @@
     .cta-band p {
       color: #b7bfc8;
       font-size: 1.15rem;
-      margin: 0 0 32px;
+      margin: 0 0 28px;
       max-width: 32em;
     }
     .cta-band .btn { padding: 14px 22px; font-size: 15px; }
@@ -462,19 +387,32 @@
     footer a { text-decoration: none; }
 
     @media (max-width: 860px) {
-      .hero { padding: 56px 0 48px; }
-      .hero-grid, .problems, .includes, .steps, .day120 {
+      .hero { padding: 56px 0 40px; }
+      .problems, .steps, .day120, .terms {
         grid-template-columns: 1fr;
       }
       .nav-links { display: none; }
-      .wrap, .wrap-wide, .nav-inner { width: min(100% - 32px, var(--wide)); }
-      section { padding: 72px 0; }
-      .guar { padding: 36px 28px; border-radius: 22px; }
-      .guar-band, .stage2 { padding-bottom: 72px; }
-      .stage2-inner { grid-template-columns: 1fr; gap: 8px; }
-      .cta-band { padding: 72px 0; }
-      .proof { margin-top: 8px; }
-      .step { min-height: 0; }
+      .wrap, .wrap-wide, .nav-inner {
+        width: min(calc(100% - 24px), var(--wide));
+        max-width: 100%;
+      }
+      .nav-inner { gap: 8px; }
+      .brand { font-size: 13.5px; gap: 8px; }
+      .mark { width: 26px; height: 26px; font-size: 10px; }
+      .nav-inner .btn { padding: 8px 11px; font-size: 12.5px; flex-shrink: 0; }
+      h1 { font-size: clamp(1.95rem, 8vw, 2.55rem); }
+      .path-a { max-width: none; }
+      .guar-ex {
+        white-space: normal;
+        line-height: 1.4;
+        border-radius: 14px;
+      }
+      section { padding: 56px 0; }
+      #problem { padding-top: 48px; }
+      .guar { padding: 32px 24px; border-radius: 22px; }
+      .guar-band, .stage2 { padding-bottom: 56px; }
+      .stage2-inner { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
+      .cta-band { padding: 64px 0; }
     }
   </style>
 </head>
@@ -487,7 +425,6 @@
       </a>
       <nav class="nav-links">
         <a href="#problem">Problem</a>
-        <a href="#includes">Includes</a>
         <a href="#how">How it works</a>
         <a href="#guarantee">Guarantee</a>
       </nav>
@@ -497,54 +434,20 @@
 
   <main id="top">
     <section class="hero">
-      <div class="wrap-wide hero-grid">
-        <div>
-          <p class="kicker">The 120-Day In-House Printing Proof Pilot</p>
-          <h1>Prove the <em>savings</em> before buying the equipment.</h1>
-          <p class="path-a">Your staff prints. We install, train, and support. We are not your lab.</p>
-          <div class="hero-actions">
-            <a class="btn btn-fill" href="mailto:jackpatt3rson99@gmail.com?subject=Lab%20Savings%20Review">Request a review</a>
-          </div>
+      <div class="wrap-wide">
+        <p class="kicker">The 120-Day In-House Printing Proof Pilot</p>
+        <h1>Prove the <em>savings</em><br>before buying the equipment.</h1>
+        <p class="path-a">Your staff prints. IHS installs, trains, and supports. IHS does not press Start. IHS is not the lab.</p>
+        <ul class="terms">
+          <li><strong>Loaner at $0.</strong> IHS keeps title.</li>
+          <li><strong>$7,500 fee</strong> + refund the difference.</li>
+          <li><strong>Day 120:</strong> buy and keep, or remove. No purchase obligation.</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn-fill" href="mailto:jackpatt3rson99@gmail.com?subject=Lab%20Savings%20Review">Request a review</a>
         </div>
-        <aside class="proof">
-          <p class="label">Proof Pilot</p>
-          <div class="proof-row">
-            <div class="num">120</div>
-            <div>
-              <div class="stat-label">Days to prove savings</div>
-              <span class="stat-note">inside your practice</span>
-            </div>
-          </div>
-          <div class="proof-row">
-            <div class="num">$7,500</div>
-            <div>
-              <div class="stat-label">Implementation fee</div>
-              <span class="stat-note">backed by a savings guarantee</span>
-            </div>
-          </div>
-          <div class="proof-row">
-            <div class="num">$0</div>
-            <div>
-              <div class="stat-label">Equipment purchase</div>
-              <span class="stat-note">during the pilot</span>
-            </div>
-          </div>
-        </aside>
       </div>
     </section>
-
-    <div class="ticker">
-      <div class="ticker-track">
-        <span>High lab fees</span>
-        <span>Back-and-forth</span>
-        <span>Slow turnaround</span>
-        <span>Less control</span>
-        <span>High lab fees</span>
-        <span>Back-and-forth</span>
-        <span>Slow turnaround</span>
-        <span>Less control</span>
-      </div>
-    </div>
 
     <section id="problem">
       <div class="wrap">
@@ -552,7 +455,7 @@
         <div class="problems">
           <article class="card">
             <h3>High lab fees</h3>
-            <p>High fees keep more of the manufacturing margin outside the practice.</p>
+            <p>Manufacturing margin stays outside the practice.</p>
           </article>
           <article class="card">
             <h3>Back-and-forth</h3>
@@ -560,48 +463,12 @@
           </article>
           <article class="card">
             <h3>Slow turnaround</h3>
-            <p>Long lead times and delays complicate scheduling.</p>
+            <p>Long lead times complicate scheduling.</p>
           </article>
           <article class="card">
             <h3>Less control</h3>
-            <p>Some work may be produced overseas, reducing visibility and control.</p>
+            <p>Some work may be produced overseas, with less visibility.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="includes">
-      <div class="wrap">
-        <h2>What the pilot includes</h2>
-        <div class="includes">
-          <div class="inc">
-            <div class="n">01</div>
-            <p>$0 equipment purchase during the pilot.</p>
-          </div>
-          <div class="inc">
-            <div class="n">02</div>
-            <p>IHS installs and configures the system.</p>
-          </div>
-          <div class="inc">
-            <div class="n">03</div>
-            <p>Baseline current lab spend and turnaround.</p>
-          </div>
-          <div class="inc">
-            <div class="n">04</div>
-            <p>IHS trains staff on scanning, submission, printing, post-processing, QC, and case organization. Staff run the cell.</p>
-          </div>
-          <div class="inc">
-            <div class="n">05</div>
-            <p>SOPs and repeatable workflows provided.</p>
-          </div>
-          <div class="inc">
-            <div class="n">06</div>
-            <p>IHS supports initial cases while staff print. IHS does not press Start.</p>
-          </div>
-          <div class="inc">
-            <div class="n">07</div>
-            <p>Track savings, turnaround, remakes, and production.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -613,7 +480,7 @@
           <article class="step">
             <div class="n"><span>01</span></div>
             <h3>Baseline</h3>
-            <p>Lab spend + turnaround</p>
+            <p>Current lab spend and turnaround</p>
           </article>
           <article class="step">
             <div class="n"><span>02</span></div>
@@ -623,12 +490,12 @@
           <article class="step">
             <div class="n"><span>03</span></div>
             <h3>Train + support</h3>
-            <p>Team trained + cases supported</p>
+            <p>Staff trained, SOPs, cases supported</p>
           </article>
           <article class="step">
             <div class="n"><span>04</span></div>
             <h3>Prove</h3>
-            <p>Track results; decide at day 120</p>
+            <p>Track savings, turnaround, remakes, and production</p>
           </article>
         </div>
       </div>
@@ -657,11 +524,11 @@
     <div class="stage2">
       <div class="wrap stage2-inner">
         <strong>Stage 2</strong>
-        <p style="margin:0">After printing is proven, milling can be evaluated. Printing is the offer; milling is optional Stage 2.</p>
+        <p>After printing is proven, milling can be evaluated. Printing is the offer; milling is optional Stage 2.</p>
       </div>
     </div>
 
-    <section class="cta-band" id="review" style="padding: 96px 0;">
+    <section class="cta-band" id="review">
       <div class="wrap">
         <h2>15-minute Lab Savings Review</h2>
         <p>Bring one month of lab invoices. IHS will estimate the in-house opportunity and potential savings.</p>
