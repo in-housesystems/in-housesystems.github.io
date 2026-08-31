@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pay — In-House Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bone: #f3eee4;
+      --bone-2: #ebe4d6;
+      --ink: #111111;
+      --muted: #5a574e;
+      --navy: #10141c;
+      --navy-2: #171c26;
+      --mint: #7fe0b8;
+      --mint-deep: #5ec99a;
+      --line: rgba(17, 17, 17, 0.1);
+      --max: 1080px;
+      --wide: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; overflow-x: hidden; }
+    body {
+      font-family: Inter, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: var(--bone);
+      background-image:
+        linear-gradient(rgba(17, 17, 17, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 17, 0.045) 1px, transparent 1px);
+      background-size: 56px 56px;
+      color: var(--ink);
+      line-height: 1.5;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: inherit; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+    .wrap-wide {
+      width: min(var(--wide), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    header.nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(243, 238, 228, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      width: min(var(--wide), calc(100% - 48px));
+      max-width: 100%;
+      min-width: 0;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 68px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      min-width: 0;
+    }
+    .mark {
+      flex: 0 0 auto;
+      min-width: 48px;
+      height: 32px;
+      padding: 0 11px;
+      border-radius: 8px;
+      background: var(--navy);
+      color: var(--mint);
+      display: grid;
+      place-items: center;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+      border-radius: 999px;
+      padding: 11px 18px;
+      transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      background: transparent;
+    }
+    .btn-fill {
+      background: var(--navy);
+      color: #fff;
+      border: 1px solid var(--navy);
+    }
+    .btn-mint {
+      background: var(--mint);
+      color: var(--navy);
+      border: 1px solid var(--mint);
+      font-weight: 700;
+    }
+
+    main { flex: 1; }
+    .pay {
+      padding: 80px 0 96px;
+    }
+    .pay .wrap { max-width: 760px; }
+    .kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+    h1 {
+      font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      font-weight: 650;
+      margin: 0 0 22px;
+    }
+    h1 em {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .lede {
+      font-size: 1.12rem;
+      color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 36em;
+      line-height: 1.5;
+    }
+    .pay-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      color: #fff;
+      border: 1px solid rgba(17, 17, 17, 0.16);
+      border-radius: 26px;
+      padding: 38px 38px 34px;
+      max-width: 40em;
+      box-shadow: 0 20px 50px rgba(16, 20, 28, 0.12);
+    }
+    .pay-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: var(--mint);
+    }
+    .pay-card p {
+      margin: 0 0 14px;
+      color: #b7bfc8;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .pay-card p:last-child { margin-bottom: 0; }
+    .pay-card strong { color: #fff; font-weight: 650; }
+    .pay-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .phone {
+      display: inline-flex;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--mint);
+      text-decoration: none;
+      padding: 11px 4px;
+    }
+
+    footer {
+      padding: 28px 0 36px;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--bone);
+      border-top: 1px solid var(--line);
+    }
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .foot-meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .wrap, .wrap-wide, .nav-inner {
+        width: min(calc(100% - 24px), var(--wide));
+        max-width: 100%;
+      }
+      .nav-inner { gap: 8px; }
+      .brand { font-size: 13.5px; gap: 8px; }
+      .mark { min-width: 44px; height: 28px; font-size: 10.5px; padding: 0 9px; }
+      .nav-inner .btn { padding: 8px 11px; font-size: 12.5px; flex-shrink: 0; }
+      .pay { padding: 48px 0 64px; }
+      .pay-card { padding: 30px 22px 26px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="mark">IHS</span>
+        In-House Systems
+      </a>
+      <a class="btn btn-outline" href="index.html">Back to home</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="pay">
+      <div class="wrap">
+        <p class="kicker">Payments</p>
+        <h1>Pay <em>In-House Systems</em></h1>
+        <p class="lede">The 15-minute Lab Savings Review is free. The $7,500 pilot fee is paid after a signed agreement — not from this page.</p>
+        <div class="pay-card">
+          <p>There is no online checkout yet. For now, pay by emailed invoice.</p>
+          <p>Email <strong>jpatterson@in-housesystems.com</strong> with the subject line IHS payment, or call <strong>708-800-6129</strong>.</p>
+          <div class="pay-actions">
+            <a class="btn btn-fill" href="mailto:jpatterson@in-housesystems.com?subject=IHS%20payment">Email for invoice</a>
+            <a class="phone" href="tel:7088006129">708-800-6129</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>In-House Systems LLC</span>
+      <span class="foot-meta">
+        <a href="pay.html">Pay</a>
+        <span>708-800-6129</span>
+        <a href="mailto:jpatterson@in-housesystems.com">jpatterson@in-housesystems.com</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
