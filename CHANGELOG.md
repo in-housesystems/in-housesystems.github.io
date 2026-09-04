@@ -1,10 +1,20 @@
-﻿# in-housesystems.com changelog
+# in-housesystems.com changelog
 
 Newest first. This is the human list of what went live. GitHub still has the technical commits.
 
 ## Sep 4, 2026 — Calculator URL now redirects
 
-- `/calculator.html` now redirects to `/practice-savings-calculator/`
+- `/calculator.html` is no longer a calculator. It sends people to the real app at `/practice-savings-calculator/`
+- Old bookmarks and links still work
+- Homepage offer copy did not change (still $7,500, still no buy button)
+- Pay page did not change
+
+## Sep 2, 2026 — Calculator page added
+
+- New page at `/calculator.html` with a lab savings calculator
+- The dedicated calculator already lived at `/practice-savings-calculator/`
+- Homepage and pay page did not change
+- Replaced on Sep 4 with the redirect above
 
 ## Aug 30, 2026 — Current site (live now)
 
@@ -26,7 +36,7 @@ What you see at https://in-housesystems.com
 
 Not a design change. The domain nametag (`CNAME`) was removed and put back so GitHub could issue the HTTPS padlock. Same site, four tiny commits.
 
-## Aug 30, 2026 — Grok/Codex look pass
+## Aug 30, 2026 — Landing-page look pass
 
 - Dropped the ticker bar and the proof card
 - Restored a normal landing-page hero

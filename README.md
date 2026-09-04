@@ -2,19 +2,22 @@
 
 https://in-housesystems.com
 
-This repository is the public website for In-House Systems LLC. It is a company site, not a patient chart and not a clinical app.
+Company website for In-House Systems LLC. For dental practices that want to print appliances in-house instead of sending them to a lab.
 
-GitHub Pages serves this User Pages repo on the custom domain. The GitHub slug must stay `in-housesystems.github.io`.
+The homepage is the 120-day printing proof pilot offer. **Request a review** books a 15-minute lab savings review on the IHS calendar. This is a company site, not a patient chart and not a clinical app.
 
-## Leftover URLs vs dedicated apps
+Contact: jpatterson@in-housesystems.com · 708-800-6129
 
-This repo is the company site (Path A offer + invoice stub). Products live in sibling GitHub Pages apps on the same custom domain. Do not put payday-log, practice-files, or equipment-prices on the marketing homepage.
+## Pages
 
-| Leftover / company URL | What it is | Dedicated app (if any) |
-|---|---|---|
-| `/` | Company Path A offer | — |
-| `/pay.html` | LLC invoice stub (customer payment instructions) | **Not** payday-log |
-| `/calculator.html` | Redirect stub | `/practice-savings-calculator/` |
-| `/payday-log/` | Internal W-2 piece-rate payroll log | payday-log repo |
-| `/practice-files/` | Internal ops | practice-files repo |
-| `/equipment-prices/` | Internal ops | equipment-prices repo |
+The first three live in this repo. The rest are separate apps on the same domain. Internal tools stay off the marketing homepage.
+
+| URL | What it is |
+|---|---|
+| `/` | Company offer |
+| `/pay.html` | How to pay an IHS invoice (not payroll) |
+| `/calculator.html` | Redirects to the calculator app |
+| `/practice-savings-calculator/` | Lab savings calculator |
+| `/payday-log/` | Internal payroll log |
+| `/practice-files/` | Internal ops |
+| `/equipment-prices/` | Internal ops |
