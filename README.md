@@ -6,8 +6,6 @@ Company website for In-House Systems LLC. For dental practices that want to prin
 
 The homepage is the 120-day printing proof pilot offer. **Request a review** books a 15-minute lab savings review on the IHS calendar. This is a company site, not a patient chart and not a clinical app.
 
-Contact: jpatterson@in-housesystems.com · 708-800-6129
-
 ## Pages
 
 The first three live in this repo. The rest are separate apps on the same domain. Internal tools stay off the marketing homepage.
