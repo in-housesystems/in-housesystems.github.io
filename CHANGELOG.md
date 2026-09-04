@@ -2,6 +2,10 @@
 
 Newest first. This is the human list of what went live. GitHub still has the technical commits.
 
+## Sep 4, 2026 — Calculator URL now redirects
+
+- `/calculator.html` now redirects to `/practice-savings-calculator/`
+
 ## Aug 30, 2026 — Current site (live now)
 
 What you see at https://in-housesystems.com
