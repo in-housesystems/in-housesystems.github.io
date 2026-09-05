@@ -2,6 +2,12 @@
 
 Newest first. This is the human list of what went live. GitHub still has the technical commits.
 
+## Sep 5, 2026 — Homepage links limited to contact
+
+- Removed the homepage links to Pay and the Lab Savings Calculator until those pages are ready
+- The unfinished pages themselves did not change
+- Review booking, tap-to-call, and email links remain available
+
 ## Sep 5, 2026 — Footer calculator, tap-to-call, tab icon
 
 - Homepage and pay footer now link to the Lab Savings Calculator
