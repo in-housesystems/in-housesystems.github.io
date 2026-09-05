@@ -2,6 +2,14 @@
 
 Newest first. This is the human list of what went live. GitHub still has the technical commits.
 
+## Sep 5, 2026 — Footer calculator, tap-to-call, tab icon
+
+- Homepage and pay footer now link to the Lab Savings Calculator
+- Phone number is tappable
+- IHS mark shows in the browser tab
+- Homepage offer copy did not change (still $7,500, still no buy button)
+- Pay page copy did not change
+
 ## Sep 4, 2026 — Calculator URL now redirects
 
 - `/calculator.html` is no longer a calculator. It sends people to the real app at `/practice-savings-calculator/`
